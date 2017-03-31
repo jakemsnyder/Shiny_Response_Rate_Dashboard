@@ -46,17 +46,20 @@ server <- function(input, output) {
     
     
     dat <- reactive({
-      data %>% group_by_(input$demographic) %>% summarise(Response.Rate=mean(Finished))
+      data %>% group_by_(input$demographic) %>% summarise(Response.Rate=mean(Finished),Count=sum(Finished))
     })
     
     
     
     output$responsePlot <- renderPlot({
       
-    ggplot(dat(),aes_string(x=input$demographic, y='Response.Rate',fill='Response.Rate')) + geom_bar(stat="identity",colour='grey') + 
+    ggplot(dat(),aes_string(x=input$demographic, y='Response.Rate',fill='Response.Rate')) +
+        geom_bar(stat="identity",colour='grey') + 
         labs(x=input$demographic, y="Response Rate") +
         scale_fill_gradient2(oob=squish,limits=c(0,0.4),low='white',high='#076815',
                              mid='#2ea03f',midpoint=0.2,name='Response Rate') +
+        geom_text(aes(label=paste(Count,'; ',round(Response.Rate,3)*100,'%',sep='')),hjust=-0.1) +
+        scale_y_continuous(expand = c(0.15, 0)) +
         coord_flip() + theme_bw(base_size=16) + theme(axis.ticks.y=element_blank())
    })
 }
