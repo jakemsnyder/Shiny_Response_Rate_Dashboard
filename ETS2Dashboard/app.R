@@ -60,7 +60,8 @@ server <- function(input, output) {
                              mid='#2ea03f',midpoint=0.2,name='Response Rate') +
         geom_text(aes(label=paste(Count,'; ',round(Response.Rate,3)*100,'%',sep='')),hjust=-0.1) +
         scale_y_continuous(expand = c(0.15, 0)) +
-        coord_flip() + theme_bw(base_size=16) + theme(axis.ticks.y=element_blank())
+        coord_flip() + theme_bw(base_size=16) +
+        theme(axis.ticks.y=element_blank(),panel.grid.major.y=element_blank())
    })
 }
 
