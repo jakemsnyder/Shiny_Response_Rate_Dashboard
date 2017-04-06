@@ -6,6 +6,7 @@ library(scales)
 # Set working directory to app folder before launch!!!
 update <- read.table('LastUpdate.txt',sep=',',header=F,stringsAsFactors=F)
 data <- read.csv('data.csv')
+overall.rate <- paste0(round(mean(data$Finished,na.rm=T),3)*100,"%")
 # chart <- read.csv('chart.csv')
 # Define UI for application that draws a histogram
 ui <- fluidPage(
@@ -21,6 +22,10 @@ ui <- fluidPage(
                     list('Agency'='Agency',
                          'Vendor System'='Vendor.System')
                     ),
+          h5("Overall Response Rate: ",
+             br(),
+             div(overall.rate,style = "color:green;
+                                       font-size:200%;")),
           width=3
           ),
       

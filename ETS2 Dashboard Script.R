@@ -23,6 +23,7 @@ df <- df %>% mutate(Finished=as.numeric(Finished)) %>% filter(Finished==1 & Reci
 recipients <- read.csv('~/Documents/ETS2/2017 ETS2 Recipient List.csv',stringsAsFactors = F)
 recipients <- recipients %>%
   select(Email,
+         # Add any demographic variables here
          Agency,
          Vendor.System)
 
