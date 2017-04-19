@@ -7,7 +7,7 @@ library(scales)
 update <- read.table('LastUpdate.txt',sep=',',header=F,stringsAsFactors=F)
 data <- read.csv('data.csv')
 overall.rate <- paste0(round(mean(data$Finished,na.rm=T),3)*100,"%")
-# chart <- read.csv('chart.csv')
+
 # Define UI for application that draws a histogram
 ui <- fluidPage(
    
@@ -19,8 +19,8 @@ ui <- fluidPage(
    sidebarLayout(
       sidebarPanel(
           selectInput("demographic","Demographic:",
-                    list('Agency'='Agency',
-                         'Vendor System'='Vendor.System')
+                    list('Vendor System'='Vendor.System',
+                         'Agency'='Agency')
                     ),
           h5("Overall Response Rate: ",
              br(),
