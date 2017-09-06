@@ -22,3 +22,7 @@ are saved are the demographic fields and a binary `Finished` field indicating wh
 
 In the ETS2 example, the demographic information is `Agency` and `Vendor System`. Note that this information cannot be tied 
 to any individual, as that information has been removed from the data altogether.
+
+### Screenshot of the dashboard
+
+![Screenshot of dashboard](https://github.com/jakemsnyder/Shiny_Response_Rate_Dashboard/blob/master/Final%20Image.png)
